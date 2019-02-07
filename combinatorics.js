@@ -189,8 +189,11 @@
         hideProperty(that, 'index');
         addProperties(that, {
             valueOf: sizeOf,
-            init: function() {
-                this.index = first;
+            _index: function() {
+                return this.index || first;
+            },
+            init: function(index) {
+                this.index = index || first;
             },
             next: function() {
                 if (this.index >= maxIndex) return;
